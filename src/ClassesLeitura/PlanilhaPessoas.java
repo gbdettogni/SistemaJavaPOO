@@ -13,10 +13,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-class PlanilhaPessoas {
-    static List<Pessoa> _lePlanilhaPessoa(String pasta){
-        List<Pessoa> pessoas = new ArrayList<>();
+import static ClassesSistema.Pessoa.addPessoa;
 
+class PlanilhaPessoas {
+    static void _lePlanilhaPessoa(String pasta){
         try {
             Scanner leitor = new Scanner(new File(pasta + "pessoas.csv"));
             leitor.useDelimiter("\n");
@@ -49,19 +49,19 @@ class PlanilhaPessoas {
                     PessoaFisica pf = new PessoaFisica(id,nome,telefone,endereco,
                                     dataNascimento,cpf,poupanca,salario,gastos);
 
-                    pessoas.add(pf);
+                    addPessoa(pf);
                 }
                 else if (tipo.equals("J")) {  //dados adicionais PessoaJuridica
                     String cnpj = dados[5];
 
                     PessoaJuridica pj = new PessoaJuridica(id,nome,telefone,endereco,cnpj);
-                    pessoas.add(pj);
+                    addPessoa(pj);
                 }
                 else if (tipo.equals("L")) {  //dados adicionais Loja
                     String cnpj = dados[5];
 
                     Loja l = new Loja(id,nome,telefone,endereco,cnpj);
-                    pessoas.add(l);
+                    addPessoa(l);
                 }
             }
             leitor.close();
@@ -70,7 +70,5 @@ class PlanilhaPessoas {
             System.out.println("Erro de I/O");
             System.exit(0);
         }
-
-        return pessoas;
     }
 }

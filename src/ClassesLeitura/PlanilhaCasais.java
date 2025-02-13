@@ -11,7 +11,7 @@ import ClassesSistema.Pessoa;
 import ClassesSistema.PessoaFisica;
 
 public class PlanilhaCasais {
-    static List<Casal> _lePlanilhaCasais(String pasta, List<Pessoa> pessoas){
+    static List<Casal> _lePlanilhaCasais(String pasta){
         List<Casal> casais = new ArrayList<>();
 
         try {   //primeiro pela planilha de lares
