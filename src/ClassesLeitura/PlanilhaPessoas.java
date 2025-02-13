@@ -3,16 +3,15 @@ package ClassesLeitura;
 import ClassesSistema.Pessoa;
 import ClassesSistema.PessoaFisica;
 import ClassesSistema.PessoaJuridica;
+import ClassesSistema.Loja;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.math.BigInteger;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Currency;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 class PlanilhaPessoas {
     static List<Pessoa> _lePlanilhaPessoa(String pasta){
@@ -20,32 +19,53 @@ class PlanilhaPessoas {
 
         try {
             Scanner leitor = new Scanner(new File(pasta + "pessoas.csv"));
-            leitor.useDelimiter(";");
-            while (leitor.hasNextLine()) {
-                BigInteger id = new BigInteger(leitor.next());
-                char tipo = leitor.next().charAt(0);
+            leitor.useDelimiter("\n");
+            while(leitor.hasNextLine()) {
+                String linha = leitor.nextLine();
+                String[] dados = linha.split(";");
 
-                if('F' == tipo){
-                    PessoaFisica pf = new PessoaFisica();
-                    pf.setNome(leitor.next());
-                    pf.setTelefone(leitor.next());
-                    pf.setEndereco(leitor.next());
-                    pf.setCpf(leitor.next());
+                String  id = dados[0],      //dados comuns a Pessoa
+                        tipo = dados[1],
+                        nome = dados[2],
+                        telefone = dados[3],
+                        endereco = dados[4];
+
+                if(tipo.equals("F")){       //dados adicionais PessoaFísica
+                    String cpf = dados[5];
+
                     DateTimeFormatter parser = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    pf.setDataNascimento(LocalDate.parse(leitor.next(), parser));
-                    pf.setPoupanca(Double.parseDouble(leitor.next()));
-                    pf.setSalario(Double.parseDouble(leitor.next()));
-                    pf.setGastos(Double.parseDouble(leitor.next()));
+                    LocalDate dataNascimento = LocalDate.parse(dados[6], parser);
+
+                    NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
+                    double poupanca=0, salario=0, gastos=0;
+                    try {
+                        poupanca = format.parse(dados[7]).doubleValue();
+                        salario = format.parse(dados[8]).doubleValue();
+                        gastos = format.parse(dados[9]).doubleValue();
+                    } catch (ParseException e) {
+                        System.out.println("Erro de formatação");   //caso doubles não estejam no formato certo
+                    }
+
+                    PessoaFisica pf = new PessoaFisica(id,nome,telefone,endereco,
+                                    dataNascimento,cpf,poupanca,salario,gastos);
+
                     pessoas.add(pf);
-                } else if ('J' == tipo) {
-                    PessoaJuridica pj = new PessoaJuridica();
-                    pj.setNome(leitor.next());
-                    pj.setTelefone(leitor.next());
-                    pj.setEndereco(leitor.next());
-                    pj.setCnpj(leitor.next());
+                }
+                else if (tipo.equals("J")) {  //dados adicionais PessoaJuridica
+                    String cnpj = dados[5];
+
+                    PessoaJuridica pj = new PessoaJuridica(id,nome,telefone,endereco,cnpj);
                     pessoas.add(pj);
                 }
+                else if (tipo.equals("L")) {  //dados adicionais Loja
+                    String cnpj = dados[5];
+
+                    Loja l = new Loja(id,nome,telefone,endereco,cnpj);
+                    pessoas.add(l);
+                }
             }
+            leitor.close();
+
         }catch (FileNotFoundException e) {
             System.out.println("Erro de I/O");
             System.exit(0);

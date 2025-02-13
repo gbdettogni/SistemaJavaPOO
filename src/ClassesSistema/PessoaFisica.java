@@ -1,6 +1,7 @@
 package ClassesSistema;
 
 import java.time.LocalDate;
+import java.util.Locale;
 
 public class PessoaFisica extends Pessoa {
     private LocalDate dataNascimento;
@@ -9,33 +10,18 @@ public class PessoaFisica extends Pessoa {
     private double salario;
     private double gastos;
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public PessoaFisica(String id, String nome, String telefone, String endereco,
+                        LocalDate dataNascimento, String cpf, double poupanca, double salario, double gastos){
+        super(id,nome,telefone,endereco);
         this.dataNascimento = dataNascimento;
-    }
-
-    public void setPoupanca(double poupanca) {
+        this.cpf = cpf;
         this.poupanca = poupanca;
-    }
-
-    public void setSalario(double salario) {
         this.salario = salario;
-    }
-
-    public void setGastos(double gastos) {
         this.gastos = gastos;
     }
 
-    public static void imprimeSujeito(PessoaFisica pf){
-        System.out.println(pf.cpf);
-        System.out.println(pf.gastos);
-        System.out.println(pf.nome);
-        System.out.println(pf.endereco);
-        System.out.println(pf.salario);
-        System.out.println(pf.telefone);
-        System.out.println(pf.dataNascimento);
+    public void imprimeSujeito(){
+        Locale l = Locale.FRANCE;
+        System.out.printf(l,"Nome: %s\nEndereço: %s\nTelefone: %s\nCPF: %s\n",nome,endereco,telefone,cpf);
     }
 }
