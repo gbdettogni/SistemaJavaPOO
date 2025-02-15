@@ -16,4 +16,8 @@ public class NovoLar {
         this.numero = numero;
         this.complemento = complemento;
     }
+
+    public void imprimeDados(){
+        System.out.println("Rua " + rua + "Num. " + numero + " (" + complemento + ")");
+    }
 }
