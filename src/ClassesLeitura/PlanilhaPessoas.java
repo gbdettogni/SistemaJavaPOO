@@ -1,6 +1,5 @@
 package ClassesLeitura;
 
-import ClassesSistema.Pessoa;
 import ClassesSistema.PessoaFisica;
 import ClassesSistema.PessoaJuridica;
 import ClassesSistema.Loja;
@@ -11,9 +10,9 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Locale;
+import java.util.Scanner;
 
-import static ClassesSistema.Pessoa.addPessoa;
 
 class PlanilhaPessoas {
     static void _lePlanilhaPessoa(String pasta){
@@ -49,19 +48,19 @@ class PlanilhaPessoas {
                     PessoaFisica pf = new PessoaFisica(id,nome,telefone,endereco,
                                     dataNascimento,cpf,poupanca,salario,gastos);
 
-                    addPessoa(pf);
+                    pf.addToList();
                 }
                 else if (tipo.equals("J")) {  //dados adicionais PessoaJuridica
                     String cnpj = dados[5];
 
                     PessoaJuridica pj = new PessoaJuridica(id,nome,telefone,endereco,cnpj);
-                    addPessoa(pj);
+                    pj.addToList();
                 }
                 else if (tipo.equals("L")) {  //dados adicionais Loja
                     String cnpj = dados[5];
 
                     Loja l = new Loja(id,nome,telefone,endereco,cnpj);
-                    addPessoa(l);
+                    l.addToList();
                 }
             }
             leitor.close();
