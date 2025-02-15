@@ -53,6 +53,9 @@ public class Casal {
         if(lar != null){
             lar.imprimeDados();
         }
+        if (casamento != null){
+            casamento.imprimeDados();
+        }
         System.out.println("----------------");
     }
 }

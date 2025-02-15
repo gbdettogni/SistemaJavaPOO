@@ -18,6 +18,6 @@ public class NovoLar {
     }
 
     public void imprimeDados(){
-        System.out.println("Rua " + rua + "Num. " + numero + " (" + complemento + ")");
+        System.out.println("Lar: " + rua + ", Num. " + numero + " (" + complemento + ")");
     }
 }

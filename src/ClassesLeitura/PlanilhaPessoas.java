@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 
 class PlanilhaPessoas {
-    static void _lePlanilhaPessoa(String pasta){
+    static void lePlanilhaPessoas(String pasta){
         try {
             Scanner leitor = new Scanner(new File(pasta + "pessoas.csv"));
             leitor.useDelimiter("\n");
