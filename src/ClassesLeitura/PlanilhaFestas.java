@@ -11,9 +11,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import static ClassesSistema.Pessoa.getPessoas;
-
-public class LeituraFestas {
+public class PlanilhaFestas {
     static void _lePlanilhaFestas(String pasta){
         try {
             Scanner leitor = new Scanner(new File(pasta + "pessoas.csv"));
