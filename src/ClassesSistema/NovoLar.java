@@ -19,5 +19,15 @@ public class NovoLar {
 
     public void imprimeDados(){
         System.out.println("Lar: " + rua + ", Num. " + numero + " (" + complemento + ")");
+        if(!tarefas.isEmpty()) System.out.println("Tarefas:");
+        for(Tarefa f : tarefas) f.imprimeDados();
+    }
+
+    public void addTarefa(Tarefa f){
+        tarefas.add(f);
+    }
+
+    public String getId() {
+        return id;
     }
 }

@@ -13,6 +13,13 @@ public class PessoaJuridica extends Pessoa {
         this.cnpj = cnpj;
     }
 
+    public static PessoaJuridica getById(String id){
+        for(PessoaJuridica pj : pessoasJuridicas) {
+            if (pj.id.equals(id)) return pj;
+        }
+        return null;
+    }
+
     public void imprimeSujeito(){
         Locale l = Locale.FRANCE;
         System.out.printf(l,"Loja: %s\nEndereço: %s\nTelefone: %s\nCNPJ: %s\n",nome,endereco,telefone,cnpj);

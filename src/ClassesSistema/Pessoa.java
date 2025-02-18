@@ -20,5 +20,15 @@ public abstract class Pessoa {
         return id;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public static Pessoa getById(String id){
+        PessoaFisica pf = PessoaFisica.getById(id);
+        if(pf != null) return pf;
+        return PessoaJuridica.getById(id);
+    }
+
     public abstract void imprimeSujeito();
 }

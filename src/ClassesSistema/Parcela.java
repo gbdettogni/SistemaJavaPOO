@@ -6,5 +6,6 @@ public class Parcela {
 
     public Parcela(int numInicial) {
         this.numInicial = numInicial;
+        numAtual = 0;
     }
 }

@@ -14,4 +14,12 @@ public class LeituraPrincipal {
         PlanilhaCasais.lePlanilhaLares(pasta);
         PlanilhaCasais.lePlanilhaCasamentos(pasta);
     }
+
+    public static void leFestas(String pasta){
+        PlanilhaFestas.lePlanilhaFestas(pasta);
+    }
+
+    public static void leTarefas(String pasta){
+        PlanilhaTarefas.lePlanilhaTarefas(pasta);
+    }
 }

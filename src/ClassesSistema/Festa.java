@@ -22,4 +22,11 @@ public class Festa {
         this.listaConvidados = listaConvidados;
         this.parcela = parcela;
     }
+
+    public void imprimeDados(){
+        System.out.printf("Festa: %s (gasto de R$%f)\n", local, precoPago);
+        System.out.println(data + " | " + horario);
+        System.out.println("Convidados:");
+        System.out.println(listaConvidados);
+    }
 }

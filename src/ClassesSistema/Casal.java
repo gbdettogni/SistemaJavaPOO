@@ -6,7 +6,7 @@ import java.util.List;
 public class Casal {
     private static List<Casal> casais = new ArrayList<>();
     private Casamento casamento;
-    private Festa festa;
+
     private NovoLar lar;
     private Pessoa pessoa1, pessoa2;
 
@@ -14,7 +14,6 @@ public class Casal {
         this.pessoa1 = pessoa1;
         this.pessoa2 = pessoa2;
         casamento = null;
-        festa = null;
         lar = null;
     }
 
@@ -26,8 +25,18 @@ public class Casal {
         return null;
     }
 
-    public void setFesta(Festa festa){
-        this.festa = festa;
+    public static Casamento getCasamentoById(String idCasamento){
+        for(Casal c : casais){
+            if (c.casamento != null && c.casamento.getId().equals(idCasamento)) return c.casamento;
+        }
+        return null;
+    }
+
+    public static NovoLar getLarById(String idLar){
+        for(Casal c : casais){
+            if (c.lar != null && c.lar.getId().equals(idLar)) return c.lar;
+        }
+        return null;
     }
 
     public void setCasamento(Casamento casamento){

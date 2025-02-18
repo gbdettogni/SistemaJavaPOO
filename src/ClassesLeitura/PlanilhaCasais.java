@@ -42,11 +42,6 @@ public class PlanilhaCasais {
                 else{
                     //EXCEPTION PESSOA INEXISTENTE
                 }
-                //
-                //
-                //  TO DO: leitura dos lares
-                //
-                //
             }
             leitor.close();
 
@@ -80,11 +75,6 @@ public class PlanilhaCasais {
                 } else {
                     //EXCEPTION PESSOA INEXISTENTE
                 }
-                //
-                //
-                //  TO DO: leitura dos lares
-                //
-                //
             }
             leitor.close();
         } catch (FileNotFoundException e) {

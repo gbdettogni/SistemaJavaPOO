@@ -18,8 +18,17 @@ public class Casamento {
         this.festa = null;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setFesta(Festa f){
+        this.festa = f;
+    }
+
     public void imprimeDados(){
         System.out.printf("Casamento: %s %s\n", id, local);
         System.out.println(data + " | " + horario);
+        if (festa != null) festa.imprimeDados();
     }
 }
