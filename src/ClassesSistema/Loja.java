@@ -15,4 +15,11 @@ public class Loja extends PessoaJuridica {
     }
 
     public static List<Loja> getLojas(){return lojas;}
+
+    public static Loja getById(String idLoja){
+        for(Loja lj : lojas) {
+            if (lj.id.equals(idLoja)) return lj;
+        }
+        return null;
+    }
 }

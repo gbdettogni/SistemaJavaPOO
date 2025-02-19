@@ -11,8 +11,14 @@ public class Casal {
     private Pessoa pessoa1, pessoa2;
 
     public Casal(Pessoa pessoa1, Pessoa pessoa2){
-        this.pessoa1 = pessoa1;
-        this.pessoa2 = pessoa2;
+        if (pessoa1.getNome().compareTo(pessoa2.getNome()) < 0) {   //deixando as pessoas do casal em ordem alfabética
+            this.pessoa1 = pessoa1;
+            this.pessoa2 = pessoa2;
+        } else{
+            this.pessoa1 = pessoa2;
+            this.pessoa2 = pessoa1;
+        }
+
         casamento = null;
         lar = null;
     }
@@ -24,7 +30,12 @@ public class Casal {
         }
         return null;
     }
-
+    public static Tarefa getTarefaById(String idTarefa) {
+        for(Casal c : casais){
+            if (c.lar != null) return c.lar.getTarefaById(idTarefa);
+        }
+        return null;
+    }
     public static Casamento getCasamentoById(String idCasamento){
         for(Casal c : casais){
             if (c.casamento != null && c.casamento.getId().equals(idCasamento)) return c.casamento;

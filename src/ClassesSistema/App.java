@@ -11,6 +11,7 @@ public class App {
         LeituraPrincipal.leCasais(args[0]);
         LeituraPrincipal.leFestas(args[0]);
         LeituraPrincipal.leTarefas(args[0]);
+        LeituraPrincipal.leCompras(args[0]);
 
 //        System.out.println("PESSOAS FISICAS:");
 //        List<PessoaFisica> pfs = PessoaFisica.getPessoas();

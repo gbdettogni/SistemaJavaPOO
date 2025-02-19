@@ -1,6 +1,7 @@
 package ClassesSistema;
 
 import java.util.Currency;
+import java.util.Locale;
 
 public class Compra {
     private String nomeProduto;
@@ -15,5 +16,9 @@ public class Compra {
         this.preco = preco;
         this.loja = loja;
         this.parcela = parcela;
+    }
+
+    public void imprimeCompras() {
+        System.out.printf("foi comprado %d unidade de %s, por %f nessa tarefa, da loja %s\n", quantidade, nomeProduto, preco, loja.getNome());
     }
 }

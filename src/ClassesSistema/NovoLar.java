@@ -8,13 +8,20 @@ public class NovoLar {
     private String rua;
     private int numero;
     private String complemento;
-    private List<Tarefa> tarefas = new ArrayList<>();
+    private static List<Tarefa> tarefas = new ArrayList<>();
 
     public NovoLar(String id, String rua, int numero, String complemento){
         this.id = id;
         this.rua = rua;
         this.numero = numero;
         this.complemento = complemento;
+    }
+
+    public Tarefa getTarefaById(String idTarefa) {
+        for (Tarefa tf : tarefas){
+            if (tf.getId().equals(idTarefa)) return tf;
+        }
+        return null;
     }
 
     public void imprimeDados(){
@@ -30,4 +37,5 @@ public class NovoLar {
     public String getId() {
         return id;
     }
+
 }

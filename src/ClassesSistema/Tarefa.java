@@ -24,5 +24,14 @@ public class Tarefa {
 
     public void imprimeDados(){
         System.out.printf("Tarefa prestada por %s desde %s prazo de %d dias/meses\n", prestador.getNome(), data, prazo);
+        compra.imprimeCompras();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 }
