@@ -8,9 +8,15 @@ public class Casal {
     private Casamento casamento;
 
     private NovoLar lar;
-    private Pessoa pessoa1, pessoa2;
+    private PessoaFisica pessoa1, pessoa2;
 
-    public Casal(Pessoa pessoa1, Pessoa pessoa2){
+    private double poupancaConjunta;
+    private double salarioConjunto;
+    private double gastoConjunto;
+
+    private double gastoTotal;
+
+    public Casal(PessoaFisica pessoa1, PessoaFisica pessoa2){
         if (pessoa1.getNome().compareTo(pessoa2.getNome()) < 0) {   //deixando as pessoas do casal em ordem alfabética
             this.pessoa1 = pessoa1;
             this.pessoa2 = pessoa2;
@@ -18,6 +24,10 @@ public class Casal {
             this.pessoa1 = pessoa2;
             this.pessoa2 = pessoa1;
         }
+
+        poupancaConjunta = pessoa1.getPoupanca() + pessoa2.getPoupanca();
+        salarioConjunto = pessoa1.getSalario() + pessoa2.getSalario();
+        gastoConjunto = gastoTotal = pessoa1.getGastos() + pessoa2.getGastos();
 
         casamento = null;
         lar = null;

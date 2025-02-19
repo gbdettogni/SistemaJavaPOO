@@ -42,4 +42,16 @@ public class PessoaFisica extends Pessoa {
     public static List<PessoaFisica> getPessoas() {
         return pessoasFisicas;
     }
+
+    public double getPoupanca() {
+        return poupanca;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public double getGastos() {
+        return gastos;
+    }
 }

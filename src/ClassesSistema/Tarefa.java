@@ -23,7 +23,7 @@ public class Tarefa {
     }
 
     public void imprimeDados(){
-        System.out.printf("Tarefa prestada por %s desde %s prazo de %d dias/meses\n", prestador.getNome(), data, prazo);
+        System.out.printf("Tarefa prestada por %s desde %s prazo de %d dias/meses | Preço: %f\n", prestador.getNome(), data, prazo, preco);
         compra.imprimeCompras();
     }
 
