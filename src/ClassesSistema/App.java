@@ -7,11 +7,7 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        LeituraPrincipal.lePessoas(args[0]);
-        LeituraPrincipal.leCasais(args[0]);
-        LeituraPrincipal.leFestas(args[0]);
-        LeituraPrincipal.leTarefas(args[0]);
-        LeituraPrincipal.leCompras(args[0]);
+        LeituraPrincipal.leituraCompleta(args[0]);
 
 //        System.out.println("PESSOAS FISICAS:");
 //        List<PessoaFisica> pfs = PessoaFisica.getPessoas();

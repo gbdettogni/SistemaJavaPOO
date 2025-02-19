@@ -26,4 +26,12 @@ public class LeituraPrincipal {
     public static void leCompras(String pasta){
         PlanilhaCompras.lePlanilhaCompras(pasta);
     }
+
+    public static void leituraCompleta(String pasta){
+       lePessoas(pasta);
+       leCasais(pasta);
+       leFestas(pasta);
+       leTarefas(pasta);
+       leCompras(pasta);
+    }
 }
