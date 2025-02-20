@@ -42,6 +42,9 @@ public class PlanilhaCompras {
 
                 Tarefa tarefa = Casal.getTarefaById(idTarefa);//.getTarefaById(idTarefa);
                 Loja loja = Loja.getById(idLoja);
+                if(loja != null){
+                    loja.setValorRecebido(loja.getValorRecebido() + (preco * qtd));
+                }
 
 
                 LocalDate data = null;

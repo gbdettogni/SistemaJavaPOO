@@ -1,9 +1,7 @@
 package ClassesSistema;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Currency;
-import java.util.List;
 
 public class Tarefa {
     private String id;
@@ -22,10 +20,12 @@ public class Tarefa {
         this.prestador = prestador;
         this.parcela = parcela;
         compra = null;
+
+
     }
 
     public void imprimeDados(){
-        System.out.printf("Tarefa: %f, parcelado em %d vezes, comeca %d/%d\n", preco, parcela.getNumAtual(), data.getMonthValue(), data.getYear());
+        System.out.printf("Tarefa: %f\n", preco);
         if(compra != null)compra.imprimeCompras();
     }
 

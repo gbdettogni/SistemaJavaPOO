@@ -15,7 +15,7 @@ public class PessoaFisica extends Pessoa {
 
     public PessoaFisica(String id, String nome, String telefone, String endereco,
                         LocalDate dataNascimento, String cpf, double poupanca, double salario, double gastos){
-        super(id,nome,telefone,endereco);
+        super(id,nome,telefone,endereco,false);
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
         this.poupanca = poupanca;
@@ -25,14 +25,14 @@ public class PessoaFisica extends Pessoa {
 
     public static PessoaFisica getById(String id){
         for (PessoaFisica pf : pessoasFisicas){
-            if (pf.id.equals(id)) return pf;
+            if (pf.getId().equals(id)) return pf;
         }
         return null;
     }
 
     public void imprimeSujeito(){
         Locale l = Locale.FRANCE;
-        System.out.printf(l,"Nome: %s\nEndereço: %s\nTelefone: %s\nCPF: %s\nGasto Mensal: %s\n",nome,endereco,telefone,cpf,gastos);
+        System.out.printf(l,"Nome: %s\nEndereço: %s\nTelefone: %s\nCPF: %s\nGasto Mensal: %s\n",getNome(),getEndereco(),getTelefone(),cpf,gastos);
     }
 
     public void addToList(){

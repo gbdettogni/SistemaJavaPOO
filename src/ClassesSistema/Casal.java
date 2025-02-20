@@ -19,6 +19,8 @@ public class Casal {
 
     private List<Parcela> parcelasTotais = new ArrayList<>();
 
+    private int casamentosConjuntos;
+
     public Casal(PessoaFisica pessoa1, PessoaFisica pessoa2){
         if (pessoa1.getNome().compareTo(pessoa2.getNome()) < 0) {   //deixando as pessoas do casal em ordem alfabética
             this.pessoa1 = pessoa1;
@@ -33,6 +35,7 @@ public class Casal {
         gastoConjunto = pessoa1.getGastos() + pessoa2.getGastos();
 
         gastoTotal = 0;
+        casamentosConjuntos = 0;
 
         casamento = null;
         lar = null;
@@ -44,6 +47,38 @@ public class Casal {
         if (lar != null){
             gastoTotal += lar.getPrecoTotalTarefas();
         }
+    }
+
+    public void processaCasamentosConjuntos(){
+        List<Casal> casais = Casal.getCasais();
+        for (Casal c : casais){
+            if(this != c && c.casamento != null && c.casamento.getFesta() != null){
+                List<String> convidados = c.casamento.getFesta().getListaConvidados();
+                String nome1 = pessoa1.getNome(), nome2 = pessoa2.getNome();
+                boolean p1 = false, p2 = false;
+
+                for(String convidado : convidados){
+                    if (convidado.compareToIgnoreCase(nome1) == 0) p1 = true;
+                    if (convidado.compareToIgnoreCase(nome2) == 0) p2 = true;
+                    if(p1 && p2){
+                        casamentosConjuntos++;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    public double getGastoTotal() {
+        return gastoTotal;
+    }
+
+    public PessoaFisica getPessoa1() {
+        return pessoa1;
+    }
+
+    public PessoaFisica getPessoa2() {
+        return pessoa2;
     }
 
     public static Casal getByPessoas(Pessoa p1, Pessoa p2){
@@ -133,6 +168,7 @@ public class Casal {
             casamento.imprimeDados();
         }
         System.out.println("Gasto total: " + gastoTotal);
+        System.out.println("Casamentos conjuntos: " + casamentosConjuntos);
         System.out.println("----------------");
     }
 
