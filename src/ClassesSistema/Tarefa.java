@@ -1,7 +1,9 @@
 package ClassesSistema;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Currency;
+import java.util.List;
 
 public class Tarefa {
     private String id;

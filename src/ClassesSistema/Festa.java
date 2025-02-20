@@ -38,6 +38,10 @@ public class Festa {
 
     //}
 
+    public List<String> getListaConvidados() {
+        return listaConvidados;
+    }
+
     public Parcela getParcelaFesta() {
         return parcela;
     }
