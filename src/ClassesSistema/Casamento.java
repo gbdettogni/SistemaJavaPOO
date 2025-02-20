@@ -18,6 +18,10 @@ public class Casamento {
         this.festa = null;
     }
 
+    public Festa getFesta() {
+        return festa;
+    }
+
     public String getId() {
         return id;
     }

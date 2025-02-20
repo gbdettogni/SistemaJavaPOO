@@ -32,7 +32,7 @@ public class PessoaFisica extends Pessoa {
 
     public void imprimeSujeito(){
         Locale l = Locale.FRANCE;
-        System.out.printf(l,"Nome: %s\nEndereço: %s\nTelefone: %s\nCPF: %s\n",nome,endereco,telefone,cpf);
+        System.out.printf(l,"Nome: %s\nEndereço: %s\nTelefone: %s\nCPF: %s\nGasto Mensal: %s\n",nome,endereco,telefone,cpf,gastos);
     }
 
     public void addToList(){

@@ -23,6 +23,10 @@ public class Festa {
         this.parcela = parcela;
     }
 
+    public double getPrecoPago() {
+        return precoPago;
+    }
+
     public void imprimeDados(){
         System.out.printf("Festa: %s (gasto de R$%f)\n", local, precoPago);
         System.out.println(data + " | " + horario);

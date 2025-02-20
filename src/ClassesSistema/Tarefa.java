@@ -23,8 +23,14 @@ public class Tarefa {
     }
 
     public void imprimeDados(){
-        System.out.printf("Tarefa prestada por %s desde %s prazo de %d dias/meses | Preço: %f\n", prestador.getNome(), data, prazo, preco);
-        compra.imprimeCompras();
+        System.out.printf("Tarefa: %f\n", preco);
+        if(compra != null)compra.imprimeCompras();
+    }
+
+    public double getPrecoTarefa(){
+        double precoTarefa = preco;
+        if (compra != null) precoTarefa += compra.getPreco();
+        return precoTarefa;
     }
 
     public String getId() {

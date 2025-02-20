@@ -8,9 +8,9 @@ public class NovoLar {
     private String rua;
     private int numero;
     private String complemento;
-    private static List<Tarefa> tarefas = new ArrayList<>();
+    private List<Tarefa> tarefas = new ArrayList<>();
 
-    public NovoLar(String id, String rua, int numero, String complemento){
+    public NovoLar(String id, String rua, int numero, String complemento) {
         this.id = id;
         this.rua = rua;
         this.numero = numero;
@@ -22,6 +22,14 @@ public class NovoLar {
             if (tf.getId().equals(idTarefa)) return tf;
         }
         return null;
+    }
+
+    public double getPrecoTotalTarefas(){
+        double precoTarefas = 0;
+        for(Tarefa f : tarefas){
+            precoTarefas += f.getPrecoTarefa();
+        }
+        return precoTarefas;
     }
 
     public void imprimeDados(){

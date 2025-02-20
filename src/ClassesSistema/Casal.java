@@ -27,10 +27,20 @@ public class Casal {
 
         poupancaConjunta = pessoa1.getPoupanca() + pessoa2.getPoupanca();
         salarioConjunto = pessoa1.getSalario() + pessoa2.getSalario();
-        gastoConjunto = gastoTotal = pessoa1.getGastos() + pessoa2.getGastos();
+        gastoConjunto = pessoa1.getGastos() + pessoa2.getGastos();
+
+        gastoTotal = 0;
 
         casamento = null;
         lar = null;
+    }
+
+    public void processaGastoTotal(){
+        Festa f = casamento.getFesta();
+        if(f != null) gastoTotal += f.getPrecoPago();
+        if (lar != null){
+            gastoTotal += lar.getPrecoTotalTarefas();
+        }
     }
 
     public static Casal getByPessoas(Pessoa p1, Pessoa p2){
@@ -42,7 +52,10 @@ public class Casal {
     }
     public static Tarefa getTarefaById(String idTarefa) {
         for(Casal c : casais){
-            if (c.lar != null) return c.lar.getTarefaById(idTarefa);
+            if (c.lar != null) {
+                Tarefa f = c.lar.getTarefaById(idTarefa);
+                if(f != null) return f;
+            }
         }
         return null;
     }
@@ -86,6 +99,7 @@ public class Casal {
         if (casamento != null){
             casamento.imprimeDados();
         }
+        System.out.println("Gasto total: " + gastoTotal);
         System.out.println("----------------");
     }
 }

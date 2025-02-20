@@ -6,19 +6,23 @@ import java.util.Locale;
 public class Compra {
     private String nomeProduto;
     private int quantidade;
-    private double preco;
+    private double precoUnidade;
     private Loja loja;
     private Parcela parcela;
 
-    public Compra(String nomeProduto, int quantidade, double preco, Loja loja, Parcela parcela) {
+    public Compra(String nomeProduto, int quantidade, double precoUnidade, Loja loja, Parcela parcela) {
         this.nomeProduto = nomeProduto;
         this.quantidade = quantidade;
-        this.preco = preco;
+        this.precoUnidade = precoUnidade;
         this.loja = loja;
         this.parcela = parcela;
     }
 
+    public double getPreco(){
+        return precoUnidade * quantidade;
+    }
+
     public void imprimeCompras() {
-        System.out.printf("foi comprado %d unidade de %s, por %f nessa tarefa, da loja %s\n", quantidade, nomeProduto, preco, loja.getNome());
+        System.out.printf("Compra: R$%f\n", getPreco());
     }
 }
