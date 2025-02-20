@@ -1,5 +1,6 @@
 package ClassesSistema;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,4 +47,11 @@ public class NovoLar {
         return id;
     }
 
+    public List<Parcela> getTotalParcelas() {
+        List<Parcela> parcelas = new ArrayList<>();
+        for (Tarefa tf : tarefas){
+            parcelas.addAll(tf.getTotalParcelas());
+        }
+        return parcelas;
+    }
 }

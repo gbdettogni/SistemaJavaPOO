@@ -35,4 +35,13 @@ public class Casamento {
         System.out.println(data + " | " + horario);
         if (festa != null) festa.imprimeDados();
     }
+
+    //public void pagaFesta(LocalDate dataAtual, Pessoa pessoa1, Pessoa pessoa2) {
+    //    if(festa!=null) festa.pagaFesta(dataAtual);
+    //}
+
+    public Parcela getParcelaFesta() {
+        if(festa != null) return festa.getParcelaFesta();
+        return null;
+    }
 }

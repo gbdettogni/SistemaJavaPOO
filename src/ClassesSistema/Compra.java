@@ -1,8 +1,5 @@
 package ClassesSistema;
 
-import java.util.Currency;
-import java.util.Locale;
-
 public class Compra {
     private String nomeProduto;
     private int quantidade;
@@ -22,7 +19,11 @@ public class Compra {
         return precoUnidade * quantidade;
     }
 
+    public Parcela getParcela() {
+        return parcela;
+    }
+
     public void imprimeCompras() {
-        System.out.printf("Compra: R$%f\n", getPreco());
+        System.out.printf("Compra: %s R$%f, parcelado em %d vezes\n",nomeProduto,  getPreco(), parcela.getNumAtual());
     }
 }

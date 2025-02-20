@@ -42,12 +42,12 @@ public class PlanilhaTarefas {
                     System.out.println("Erro de formatação");   //caso doubles não estejam no formato certo
                 }
 
-                Parcela p = new Parcela(numParcelas);
 
                 Pessoa prestador = Pessoa.getById(idPrestador);
                 if(prestador == null){
                     System.out.println("Erro: pessoa não existe");
                 }
+                Parcela p = new Parcela(numParcelas, valorPrestador, dataInicio);
 
                 NovoLar l = Casal.getLarById(idLar);
                 if(l != null)

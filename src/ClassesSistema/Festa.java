@@ -3,7 +3,6 @@ package ClassesSistema;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.List;
 
 public class Festa {
@@ -28,9 +27,17 @@ public class Festa {
     }
 
     public void imprimeDados(){
-        System.out.printf("Festa: %s (gasto de R$%f)\n", local, precoPago);
+        System.out.printf("Festa: %s (gasto de R$%f), vai ser dia %d/%d, parcela em %d vezes ai meu patrão\n", local, precoPago, data.getMonthValue(), data.getYear(), parcela.getNumAtual());
         System.out.println(data + " | " + horario);
         System.out.println("Convidados:");
         System.out.println(listaConvidados);
+    }
+
+    //public void pagaFesta(LocalDate dataAtual) {
+
+    //}
+
+    public Parcela getParcelaFesta() {
+        return parcela;
     }
 }

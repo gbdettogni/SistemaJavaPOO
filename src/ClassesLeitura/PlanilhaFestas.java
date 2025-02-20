@@ -31,7 +31,6 @@ public class PlanilhaFestas {
                 LocalTime horario = LocalTime.parse(dados[4], DateTimeFormatter.ofPattern("HH:mm"));
 
                 int numParcelas = Integer.parseInt(dados[6]);
-                Parcela parcela = new Parcela(numParcelas);
 
                 int numConvidados = Integer.parseInt(dados[7]);
 
@@ -42,6 +41,7 @@ public class PlanilhaFestas {
                 } catch (ParseException e) {
                     System.out.println("Erro de formatação");   //caso doubles não estejam no formato certo
                 }
+                Parcela parcela = new Parcela(numParcelas, preco, dataFesta);
 
                 List<String> convidados = null;
                 if(numConvidados > 0)

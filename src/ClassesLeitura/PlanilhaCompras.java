@@ -23,9 +23,6 @@ public class PlanilhaCompras {
                 String linha = leitor.nextLine();
                 String[] dados = linha.split(";");
 
-//              <id_compra>;<id_tarefa>;<id_loja>;<nome_produto>;<qtde_produto>;<preco_unitario>;
-//              <numero_parcelas>
-
                 String  idCompra = dados[0],      //dados comuns a Pessoa
                         idTarefa = dados[1],
                         idLoja = dados[2],
@@ -33,7 +30,6 @@ public class PlanilhaCompras {
 
                 int qtd = Integer.parseInt(dados[4]);
                 int numParcelas = Integer.parseInt(dados[6]);
-                Parcela parcela = new Parcela(numParcelas);
 
                 NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
 
@@ -43,8 +39,16 @@ public class PlanilhaCompras {
                 } catch (ParseException e) {
                     System.out.println("Erro de formatação");   //caso doubles não estejam no formato certo
                 }
-                Tarefa tarefa = Casal.getTarefaById(idTarefa);
+
+                Tarefa tarefa = Casal.getTarefaById(idTarefa);//.getTarefaById(idTarefa);
                 Loja loja = Loja.getById(idLoja);
+
+
+                LocalDate data = null;
+                if (tarefa != null) {
+                    data = tarefa.getData();
+                }
+                Parcela parcela = new Parcela(numParcelas, preco* qtd, data);
 
                 if(tarefa!=null)
                     tarefa.setCompra(new Compra(nome, qtd, preco, loja, parcela));

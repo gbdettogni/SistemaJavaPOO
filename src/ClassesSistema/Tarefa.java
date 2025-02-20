@@ -1,7 +1,9 @@
 package ClassesSistema;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Currency;
+import java.util.List;
 
 public class Tarefa {
     private String id;
@@ -23,7 +25,7 @@ public class Tarefa {
     }
 
     public void imprimeDados(){
-        System.out.printf("Tarefa: %f\n", preco);
+        System.out.printf("Tarefa: %f, parcelado em %d vezes, comeca %d/%d\n", preco, parcela.getNumAtual(), data.getMonthValue(), data.getYear());
         if(compra != null)compra.imprimeCompras();
     }
 
@@ -37,7 +39,22 @@ public class Tarefa {
         return id;
     }
 
+    public LocalDate getData() {
+        return data;
+    }
+
     public void setCompra(Compra compra) {
         this.compra = compra;
     }
+
+    public List<Parcela> getTotalParcelas() {
+        List<Parcela> parcelas = new ArrayList<>();
+        parcelas.add(parcela);
+        if(compra != null) {
+            parcelas.add(compra.getParcela());
+        }
+        return parcelas;
+    }
+
+
 }
