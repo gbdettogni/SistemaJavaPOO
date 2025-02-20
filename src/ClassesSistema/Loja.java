@@ -18,7 +18,7 @@ public class Loja extends PessoaJuridica {
 
     public static Loja getById(String idLoja){
         for(Loja lj : lojas) {
-            if (lj.id.equals(idLoja)) return lj;
+            if (lj.getId().equals(idLoja)) return lj;
         }
         return null;
     }

@@ -20,6 +20,8 @@ public class Tarefa {
         this.prestador = prestador;
         this.parcela = parcela;
         compra = null;
+
+
     }
 
     public void imprimeDados(){

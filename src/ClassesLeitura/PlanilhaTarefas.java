@@ -47,6 +47,11 @@ public class PlanilhaTarefas {
                 Pessoa prestador = Pessoa.getById(idPrestador);
                 if(prestador == null){
                     System.out.println("Erro: pessoa não existe");
+                }else{
+                    if(!prestador.isPrestador()){
+                        prestador.setPrestador(true);
+                    }
+                    prestador.setValorRecebido(prestador.getValorRecebido() + valorPrestador);
                 }
 
                 NovoLar l = Casal.getLarById(idLar);

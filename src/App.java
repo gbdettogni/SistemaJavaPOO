@@ -1,4 +1,5 @@
 import ClassesLeitura.LeituraPrincipal;
+import ClassesRelatorio.RelatorioCasais;
 import ClassesSistema.Casal;
 import ClassesRelatorio.RelatorioGeral;
 
@@ -13,9 +14,11 @@ public class App {
         List<Casal> casais = Casal.getCasais();
         for(Casal c : casais) {
             c.processaGastoTotal();
+            c.processaCasamentosConjuntos();
             c.imprimeCasal();
         }
 
-
+        RelatorioCasais.ordenaListaCasais();
+        RelatorioCasais.geraRelatorioCasais(args[0]);
     }
 }

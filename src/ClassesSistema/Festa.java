@@ -27,6 +27,10 @@ public class Festa {
         return precoPago;
     }
 
+    public List<String> getListaConvidados() {
+        return listaConvidados;
+    }
+
     public void imprimeDados(){
         System.out.printf("Festa: %s (gasto de R$%f)\n", local, precoPago);
         System.out.println(data + " | " + horario);

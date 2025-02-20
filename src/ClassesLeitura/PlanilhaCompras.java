@@ -45,6 +45,9 @@ public class PlanilhaCompras {
                 }
                 Tarefa tarefa = Casal.getTarefaById(idTarefa);
                 Loja loja = Loja.getById(idLoja);
+                if(loja != null){
+                    loja.setValorRecebido(loja.getValorRecebido() + (preco * qtd));
+                }
 
                 if(tarefa!=null)
                     tarefa.setCompra(new Compra(nome, qtd, preco, loja, parcela));
