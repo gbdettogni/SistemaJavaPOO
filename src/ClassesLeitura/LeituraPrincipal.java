@@ -1,7 +1,5 @@
 package ClassesLeitura;
 
-import static ClassesLeitura.Entrada.leEntradaTxt;
-
 public class LeituraPrincipal {
     public static void lePessoas(String pasta){
         PlanilhaPessoas.lePlanilhaPessoas(pasta);
@@ -30,6 +28,5 @@ public class LeituraPrincipal {
        leFestas(pasta);
        leTarefas(pasta);
        leCompras(pasta);
-       leEntradaTxt(pasta);
     }
 }

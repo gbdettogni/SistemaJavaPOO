@@ -40,7 +40,13 @@ public class PlanilhaCasais {
                     c.setNovoLar(new NovoLar(idLar, rua, numero, complemento));
                 }
                 else{
-                    //EXCEPTION PESSOA INEXISTENTE
+                    if(p1 == null) {
+                        if(p2 == null){
+                            throw new IllegalArgumentException("ID(s) de Pessoa " + idPessoa1 + " " + idPessoa2 + " não cadastrado no Lar de ID " + idLar + ".");
+                        }
+                        throw new IllegalArgumentException("ID(s) de Pessoa " + idPessoa1 + " não cadastrado no Lar de ID " + idLar + ".");
+                    }
+                    throw new IllegalArgumentException("ID(s) de Pessoa " + idPessoa2 + " não cadastrado no Lar de ID " + idLar + ".");
                 }
             }
             leitor.close();

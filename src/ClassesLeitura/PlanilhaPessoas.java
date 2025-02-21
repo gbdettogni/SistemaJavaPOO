@@ -66,7 +66,7 @@ class PlanilhaPessoas {
             leitor.close();
 
         }catch (FileNotFoundException e) {
-            System.out.println("Erro de I/O");
+            System.out.println("Erro de I/O pessoas");
             System.exit(0);
         }
     }
