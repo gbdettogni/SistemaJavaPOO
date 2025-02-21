@@ -1,9 +1,6 @@
 package ClassesLeitura;
 
-import ClassesSistema.Pessoa;
-import ClassesSistema.Casal;
-
-import java.util.List;
+import static ClassesLeitura.Entrada.leEntradaTxt;
 
 public class LeituraPrincipal {
     public static void lePessoas(String pasta){
@@ -33,5 +30,6 @@ public class LeituraPrincipal {
        leFestas(pasta);
        leTarefas(pasta);
        leCompras(pasta);
+       leEntradaTxt(pasta);
     }
 }

@@ -30,6 +30,10 @@ public class PessoaFisica extends Pessoa {
         return null;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
     public void imprimeSujeito(){
         Locale l = Locale.FRANCE;
         System.out.printf(l,"Nome: %s\nEndereço: %s\nTelefone: %s\nCPF: %s\nGasto Mensal: %s\n",getNome(),getEndereco(),getTelefone(),cpf,gastos);

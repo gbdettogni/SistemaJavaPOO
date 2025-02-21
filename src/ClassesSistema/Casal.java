@@ -19,7 +19,11 @@ public class Casal {
 
     private List<Parcela> parcelasTotais = new ArrayList<>();
 
+    private List<Double> valores = new ArrayList<>();
+
     private int casamentosConjuntos;
+
+    private LocalDate pagamentoMaisNovo;
 
     public Casal(PessoaFisica pessoa1, PessoaFisica pessoa2){
         if (pessoa1.getNome().compareTo(pessoa2.getNome()) < 0) {   //deixando as pessoas do casal em ordem alfabética
@@ -39,6 +43,10 @@ public class Casal {
 
         casamento = null;
         lar = null;
+    }
+
+    public List<Double> getValores() {
+        return valores;
     }
 
     public void processaGastoTotal(){
@@ -178,6 +186,10 @@ public class Casal {
         System.out.println("----------------");
     }
 
+    public LocalDate getPagamentoMaisNovo() {
+        return pagamentoMaisNovo;
+    }
+
     public boolean deduzParcelas(LocalDate dataAtual) {
         if(parcelasTotais.isEmpty()){ return true;}
         boolean taValendo = false;
@@ -186,6 +198,9 @@ public class Casal {
         for (Parcela p : parcelasTotais){
             //System.out.printf("Casal %s e %s deveriam pagar %f esse mes, eles ja tem %f, recebem %f, e pagam %f\n", pessoa1.getNome(), pessoa2.getNome(), p.getValor(), poupancaConjunta, salarioConjunto, gastoConjunto);
             if(dataAtual.isAfter(p.getDataInicio()) || (dataAtual.getMonthValue() == p.getDataInicio().getMonthValue() && dataAtual.getYear() == p.getDataInicio().getYear())){
+                if(pagamentoMaisNovo == null){
+                    pagamentoMaisNovo = dataAtual;
+                }
                 taValendo = true;
                 vaiPerder += p.getValor();
                 p.minus();
@@ -200,6 +215,8 @@ public class Casal {
             }else{
                 poupancaConjunta += salarioConjunto - gastoConjunto - vaiPerder;
             }
+            valores.add(poupancaConjunta);
+            //System.out.printf("Casal %s e %s ta com esse tanto aqui esse mês: %f, está vazio: %b\n", pessoa1.getNome(), pessoa2.getNome(), poupancaConjunta, parcelasTotais.isEmpty());
             //System.out.printf("Casal %s e %s ta com esse tanto aqui esse mês: %f, está vazio: %b\n", pessoa1.getNome(), pessoa2.getNome(), poupancaConjunta, parcelasTotais.isEmpty());
         }
         return false;

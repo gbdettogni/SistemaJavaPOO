@@ -1,6 +1,7 @@
 import ClassesLeitura.LeituraPrincipal;
 import ClassesRelatorio.RelatorioCasais;
 import ClassesRelatorio.RelatorioPrestadores;
+import ClassesRelatorio.RelatorioFinanceiro;
 import ClassesSistema.Casal;
 import ClassesRelatorio.RelatorioGeral;
 import ClassesFinanceiro.Iterador;
@@ -23,6 +24,7 @@ public class App {
 
         RelatorioCasais.ordenaListaCasais();
         RelatorioCasais.geraRelatorioCasais(args[0]);
+        RelatorioFinanceiro.geraRelatorioFinanceiro(args[0]);
         RelatorioPrestadores.geraRelatorioPrestadores(args[0]);
     }
 }
