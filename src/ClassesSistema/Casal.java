@@ -42,10 +42,12 @@ public class Casal {
     }
 
     public void processaGastoTotal(){
-        Festa f = casamento.getFesta();
-        if(f != null) gastoTotal += f.getPrecoPago();
-        if (lar != null){
-            gastoTotal += lar.getPrecoTotalTarefas();
+        if(casamento!=null) {
+            Festa f = casamento.getFesta();
+            if (f != null) gastoTotal += f.getPrecoPago();
+            if (lar != null) {
+                gastoTotal += lar.getPrecoTotalTarefas();
+            }
         }
     }
 
@@ -58,8 +60,8 @@ public class Casal {
                 boolean p1 = false, p2 = false;
 
                 for(String convidado : convidados){
-                    if (convidado.compareToIgnoreCase(nome1) == 0) p1 = true;
-                    if (convidado.compareToIgnoreCase(nome2) == 0) p2 = true;
+                    if (convidado.replace(" ","").compareToIgnoreCase(nome1.replace(" ","")) == 0) p1 = true;
+                    if (convidado.replace(" ","").compareToIgnoreCase(nome2.replace(" ","")) == 0) p2 = true;
                     if(p1 && p2){
                         casamentosConjuntos++;
                         break;
@@ -71,6 +73,10 @@ public class Casal {
 
     public double getGastoTotal() {
         return gastoTotal;
+    }
+
+    public int getCasamentosConjuntos() {
+        return casamentosConjuntos;
     }
 
     public PessoaFisica getPessoa1() {
@@ -194,7 +200,7 @@ public class Casal {
             }else{
                 poupancaConjunta += salarioConjunto - gastoConjunto - vaiPerder;
             }
-            System.out.printf("Casal %s e %s ta com esse tanto aqui esse mês: %f, está vazio: %b\n", pessoa1.getNome(), pessoa2.getNome(), poupancaConjunta, parcelasTotais.isEmpty());
+            //System.out.printf("Casal %s e %s ta com esse tanto aqui esse mês: %f, está vazio: %b\n", pessoa1.getNome(), pessoa2.getNome(), poupancaConjunta, parcelasTotais.isEmpty());
         }
         return false;
     }

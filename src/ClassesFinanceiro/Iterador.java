@@ -11,7 +11,6 @@ public class Iterador {
     public static void iteraParcelas(){
         List<Casal> casais = Casal.getCasais();
         for(Casal c : casais){
-            c.processaGastoTotal();
             c.somaParcelas();
         }
         LocalDate dataAtual = LocalDate.parse("01/01/2025", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
