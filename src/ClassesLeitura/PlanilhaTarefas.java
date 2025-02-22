@@ -1,21 +1,24 @@
 package ClassesLeitura;
 
-import ClassesSistema.*;
+import ClassesSistema.Pessoa;
+import ClassesSistema.Parcela;
+import ClassesSistema.NovoLar;
+import ClassesSistema.Casal;
+import ClassesSistema.Tarefa;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.time.format.DateTimeParseException;
+import java.util.*;
 
 public class PlanilhaTarefas {
     static void lePlanilhaTarefas(String pasta) throws Exception{
         try {
+            Hashtable<String,String> idsTarefa = new Hashtable<>();
             Scanner leitor = new Scanner(new File(pasta + "tarefas.csv"));
             leitor.useDelimiter("\n");
             while(leitor.hasNextLine()) {
@@ -24,28 +27,44 @@ public class PlanilhaTarefas {
                 String linha = leitor.nextLine();
                 String[] dados = linha.split(";");
 
-                String  idTarefa = dados[0],
-                        idLar = dados[1],
+                String  idTarefa = dados[0];
+                if (idsTarefa.containsKey(idTarefa)){
+                    throw new IllegalArgumentException("ID repetido "+idTarefa+" na classe Tarefa.");
+                }else idsTarefa.put(idTarefa,idTarefa);
+
+                String  idLar = dados[1],
                         idPrestador = dados[2];
 
                 DateTimeFormatter parser = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                LocalDate dataInicio = LocalDate.parse(dados[3], parser);
+                LocalDate dataInicio;
+                try {
+                    dataInicio = LocalDate.parse(dados[3], parser);
+                }catch (DateTimeParseException e){
+                    throw new DateTimeParseException("Erro de formatação", dados[3], 0);
+                }
 
-                int prazo = Integer.parseInt(dados[4]);
-                int numParcelas = Integer.parseInt(dados[6]);
+                int prazo;
+                int numParcelas;
+
+                try {
+                    prazo = Integer.parseInt(dados[4]);
+                    numParcelas = Integer.parseInt(dados[6]);
+                } catch (NumberFormatException e) {
+                    throw new NumberFormatException("Erro de formatação");
+                }
 
                 NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
-                double valorPrestador = 0;
+                double valorPrestador;
                 try {
                     valorPrestador = format.parse(dados[5]).doubleValue();
                 } catch (ParseException e) {
-                    System.out.println("Erro de formatação");   //caso doubles não estejam no formato certo
+                    throw new ParseException("Erro de formatação",0);  //caso doubles não estejam no formato certo
                 }
 
 
                 Pessoa prestador = Pessoa.getById(idPrestador);
                 if(prestador == null){
-                    System.out.println("Erro: pessoa não existe");
+                    throw new NullPointerException("ID(s) de Prestador de Serviço "+idPrestador+" não cadastrado na Tarefa de ID "+idTarefa+".");
                 }else{
                     if(!prestador.isPrestador()){
                         prestador.setPrestador(true);
@@ -63,8 +82,8 @@ public class PlanilhaTarefas {
             }
             leitor.close();
 
-        }catch (FileNotFoundException e) {
-            throw new FileNotFoundException("Erro de I/O");
+        }catch (IOException e) {
+            throw new IOException("Erro de I/O");
 
         }
     }

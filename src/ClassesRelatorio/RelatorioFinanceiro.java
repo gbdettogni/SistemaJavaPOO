@@ -4,9 +4,15 @@ package ClassesRelatorio;
 import ClassesSistema.Casal;
 import ClassesSistema.Par;
 
-import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+
+import java.io.IOException;
+import java.io.File;
+import java.io.OutputStream;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
 
 public class RelatorioFinanceiro {
     public static void geraRelatorioFinanceiro(String caminho) throws IOException {

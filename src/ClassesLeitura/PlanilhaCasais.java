@@ -1,8 +1,8 @@
 package ClassesLeitura;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -26,9 +26,14 @@ public class PlanilhaCasais {
                 String linha = leitor.nextLine();
                 String[] dados = linha.split(";");
 
-                String idLar = dados[0], idPessoa1 = dados[1], idPessoa2 = dados[2];
+                String idLar = dados[0];
+                if (idsLar.containsKey(idLar)){
+                    throw new IllegalArgumentException("ID repetido "+idLar+" na classe Lar.");
+                }else idsLar.put(idLar,idLar);
+
+                String idPessoa1 = dados[1], idPessoa2 = dados[2];
                 String rua = dados[3], complemento = dados[5];
-                int numero = 0;
+                int numero;
                 try {
                     numero = Integer.parseInt(dados[4]);
                 } catch (NumberFormatException e) {
@@ -56,13 +61,14 @@ public class PlanilhaCasais {
             }
             leitor.close();
 
-        } catch (FileNotFoundException e) {
-            throw new FileNotFoundException("Erro de I/O");
+        } catch (IOException e) {
+            throw new IOException("Erro de I/O");
         }
     }
 
     static void lePlanilhaCasamentos(String pasta) throws Exception {
         try {
+            Hashtable<String,String> idsCasamento = new Hashtable<>();
             Scanner leitor = new Scanner(new File(pasta + "casamentos.csv")); //depois pela planilha de casamentos
             leitor.useDelimiter("\n");
             while (leitor.hasNextLine()) {
@@ -70,9 +76,14 @@ public class PlanilhaCasais {
                 String[] dados = linha.split(";");
 //              <id_casamento>;<id1>;<id2>;<data>;<hora>;<local>
 
-                String idCasamento = dados[0], idPessoa1 = dados[1], idPessoa2 = dados[2], local = dados[5];
-                LocalDate data = null;
-                LocalTime hora = null;
+                String idCasamento = dados[0];
+                if(idsCasamento.containsKey(idCasamento)){
+                    throw new IllegalArgumentException("ID repetido "+idCasamento+" na classe Casamento.");
+                }else idsCasamento.put(idCasamento,idCasamento);
+
+                String idPessoa1 = dados[1], idPessoa2 = dados[2], local = dados[5];
+                LocalDate data;
+                LocalTime hora;
                 try{
                     data = LocalDate.parse(dados[3], DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                     hora = LocalTime.parse(dados[4], DateTimeFormatter.ofPattern("HH:mm"));
@@ -101,8 +112,8 @@ public class PlanilhaCasais {
                 }
             }
             leitor.close();
-        } catch (FileNotFoundException e) {
-            throw new FileNotFoundException("Erro de I/O");
+        } catch (IOException e) {
+            throw new IOException("Erro de I/O");
         }
     }
 }
