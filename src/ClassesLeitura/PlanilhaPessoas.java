@@ -90,7 +90,7 @@ class PlanilhaPessoas {
         }catch (IOException e) {
             System.out.println(6);
 
-            throw new IOException("Erro de I/O pessoas");
+            throw new IOException("Erro de I/O");
         }
     }
 }

@@ -37,7 +37,7 @@ public class RelatorioCasais {
         } catch (IOException e) {
             System.out.println(0);
 
-            throw new IOException("RelatorioCasal");
+            throw new IOException("Erro de I/O");
             }
     }
 

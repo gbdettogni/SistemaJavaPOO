@@ -14,7 +14,7 @@ public class RelatorioGeral {
             estCasaisFile.createNewFile();
         }catch (IOException e){
             System.out.println(9);
-            throw new IOException("Erro de I/O geral");
+            throw new IOException("Erro de I/O");
         }
     }
 }

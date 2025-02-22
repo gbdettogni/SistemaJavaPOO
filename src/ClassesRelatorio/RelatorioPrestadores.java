@@ -51,9 +51,7 @@ public class RelatorioPrestadores {
             }else System.out.println("Sou um viadinho e nao existo");
 
         }catch (IOException e){
-            System.out.println(10);
-
-            throw new IOException("Relatorio Prestadores");
+            throw new IOException("Erro de I/O");
         }
     }
 

@@ -52,9 +52,7 @@ public class RelatorioFinanceiro {
             }else System.out.println("Sou um viadinho e nao existo");
 
         }catch (IOException e) {
-            System.out.println(8);
-
-            throw new IOException("RelatorioFinanceiro");
+            throw new IOException("Erro de I/O");
         }
     }
 }

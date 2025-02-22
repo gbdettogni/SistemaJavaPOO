@@ -62,9 +62,7 @@ public class PlanilhaCasais {
             leitor.close();
 
         } catch (IOException e) {
-            System.out.println(2);
-
-            throw new IOException("Erro de I/O Casal");
+            throw new IOException("Erro de I/O");
         }
     }
 
@@ -115,9 +113,7 @@ public class PlanilhaCasais {
             }
             leitor.close();
         } catch (IOException e) {
-            System.out.println(3);
-
-            throw new IOException("Erro de I/O lar");
+            throw new IOException("Erro de I/O");
         }
     }
 }

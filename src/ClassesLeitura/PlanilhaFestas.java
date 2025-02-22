@@ -86,7 +86,7 @@ public class PlanilhaFestas {
         }catch (IOException e) {
             System.out.println(5);
 
-            throw new IOException("Erro de I/0 Festas");
+            throw new IOException("Erro de I/O");
         }
     }
 }

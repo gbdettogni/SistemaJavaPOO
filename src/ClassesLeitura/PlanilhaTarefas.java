@@ -85,7 +85,7 @@ public class PlanilhaTarefas {
         }catch (IOException e) {
             System.out.println(7);
 
-            throw new IOException("Erro de I/O tarefas");
+            throw new IOException("Erro de I/O");
 
         }
     }

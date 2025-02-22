@@ -83,7 +83,7 @@ public class PlanilhaCompras {
         }catch (IOException e) {
             System.out.println(4);
 
-            throw new IOException("Erro de I/O compras");
+            throw new IOException("Erro de I/O");
 
         }
     }
