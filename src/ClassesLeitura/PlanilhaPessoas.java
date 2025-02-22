@@ -24,7 +24,7 @@ class PlanilhaPessoas {
                                         cpfs = new Hashtable<>(),
                                         cnpjs = new Hashtable<>();
 
-            Scanner leitor = new Scanner(new File(pasta + "pessoas.csv"));
+            Scanner leitor = new Scanner(new File(pasta + "/pessoas.csv"));
             leitor.useDelimiter("\n");
             while(leitor.hasNextLine()) {
                 String linha = leitor.nextLine();
@@ -88,7 +88,9 @@ class PlanilhaPessoas {
             leitor.close();
 
         }catch (IOException e) {
-            throw new IOException("Erro de I/O");
+            System.out.println(6);
+
+            throw new IOException("Erro de I/O pessoas");
         }
     }
 }

@@ -12,22 +12,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         try{
-            RelatorioGeral.criaRelatorios(args[0]+"/");
-            LeituraPrincipal.leituraCompleta(args[0]+"/");
+            RelatorioGeral.criaRelatorios(args[0]);
+            LeituraPrincipal.leituraCompleta(args[0]);
 
             Scanner sc = new Scanner(System.in);
-            sc.useDelimiter("\n");
 
-            while(true){
+            while(sc.hasNextLine()){
                 String linha = sc.nextLine();
-                if (linha.isEmpty()){
-                    break;
-                }
                 String[] cpfs = linha.split(", ");
-                Par p = new Par(cpfs[0], cpfs[1]);
-                Par.getCasaisPar().add(p);
+                if(cpfs.length>1){
+                    Par p = new Par(cpfs[0], cpfs[1]);
+                    Par.getCasaisPar().add(p);
+                }
             }
 
             sc.close();
@@ -41,9 +39,9 @@ public class App {
             Iterador.iteraParcelas();
 
             RelatorioCasais.ordenaListaCasais();
-            RelatorioCasais.geraRelatorioCasais(args[0]+"/");
-            RelatorioFinanceiro.geraRelatorioFinanceiro(args[0]+"/");
-            RelatorioPrestadores.geraRelatorioPrestadores(args[0]+"/");
+            RelatorioCasais.geraRelatorioCasais(args[0]);
+            RelatorioFinanceiro.geraRelatorioFinanceiro(args[0]);
+            RelatorioPrestadores.geraRelatorioPrestadores(args[0]);
         }
         catch(Exception e){
             System.out.println(e.getMessage());

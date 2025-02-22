@@ -19,7 +19,7 @@ public class PlanilhaTarefas {
     static void lePlanilhaTarefas(String pasta) throws Exception{
         try {
             Hashtable<String,String> idsTarefa = new Hashtable<>();
-            Scanner leitor = new Scanner(new File(pasta + "tarefas.csv"));
+            Scanner leitor = new Scanner(new File(pasta + "/tarefas.csv"));
             leitor.useDelimiter("\n");
             while(leitor.hasNextLine()) {
 //                <id_tarefa>;<id_lar>;<id_prestador>;<data_inicio>;<prazo_entrega>;
@@ -83,7 +83,9 @@ public class PlanilhaTarefas {
             leitor.close();
 
         }catch (IOException e) {
-            throw new IOException("Erro de I/O");
+            System.out.println(7);
+
+            throw new IOException("Erro de I/O tarefas");
 
         }
     }

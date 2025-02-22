@@ -19,7 +19,7 @@ public class RelatorioCasais {
 
     public static void geraRelatorioCasais(String caminho) throws IOException{
         try{
-            File relatorio3 = new File(caminho + "saida/3-estatisticas-casais.csv");
+            File relatorio3 = new File(caminho + "/saida/3-estatisticas-casais.csv");
             if (relatorio3.exists()){
                 OutputStream os = new FileOutputStream(relatorio3);
                 PrintWriter pw = new PrintWriter(new OutputStreamWriter(os, StandardCharsets.UTF_8));
@@ -35,7 +35,9 @@ public class RelatorioCasais {
             }else System.out.println("Sou um viadinho e não existo");
 
         } catch (IOException e) {
-            throw new IOException();
+            System.out.println(0);
+
+            throw new IOException("RelatorioCasal");
             }
     }
 

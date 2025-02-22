@@ -23,7 +23,7 @@ import java.util.Comparator;
 public class RelatorioPrestadores {
     public static void geraRelatorioPrestadores(String caminho) throws IOException {
         try {
-            File relatorio2 = new File(caminho + "saida/2-estatisticas-prestadores.csv");
+            File relatorio2 = new File(caminho + "/saida/2-estatisticas-prestadores.csv");
             if (relatorio2.exists()){
                 OutputStream os = new FileOutputStream(relatorio2);
                 PrintWriter pw = new PrintWriter(new OutputStreamWriter(os, StandardCharsets.UTF_8));
@@ -51,7 +51,9 @@ public class RelatorioPrestadores {
             }else System.out.println("Sou um viadinho e nao existo");
 
         }catch (IOException e){
-            throw new IOException();
+            System.out.println(10);
+
+            throw new IOException("Relatorio Prestadores");
         }
     }
 

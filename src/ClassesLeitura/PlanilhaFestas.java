@@ -25,7 +25,7 @@ public class PlanilhaFestas {
     static void lePlanilhaFestas(String pasta) throws Exception{
         try {
             Hashtable<String,String> idsFesta = new Hashtable<>();
-            Scanner leitor = new Scanner(new File(pasta + "festas.csv"));
+            Scanner leitor = new Scanner(new File(pasta + "/festas.csv"));
             leitor.useDelimiter("\n");
             while(leitor.hasNextLine()) {
                 String linha = leitor.nextLine();
@@ -84,7 +84,9 @@ public class PlanilhaFestas {
             leitor.close();
 
         }catch (IOException e) {
-            throw new IOException("Erro de I/0");
+            System.out.println(5);
+
+            throw new IOException("Erro de I/0 Festas");
         }
     }
 }

@@ -24,7 +24,7 @@ public class PlanilhaCompras {
     static void lePlanilhaCompras(String pasta) throws Exception{
         try {
             Hashtable<String,String> idsCompra = new Hashtable<>();
-            Scanner leitor = new Scanner(new File(pasta + "compras.csv"));
+            Scanner leitor = new Scanner(new File(pasta + "/compras.csv"));
             leitor.useDelimiter("\n");
             while(leitor.hasNextLine()) {
                 String linha = leitor.nextLine();
@@ -76,12 +76,14 @@ public class PlanilhaCompras {
 
                 Parcela parcela = new Parcela(numParcelas, preco* qtd, data);
 
-                tarefa.setCompra(new Compra(nome, qtd, preco, loja, parcela));
+                tarefa.addCompra(new Compra(nome, qtd, preco, loja, parcela));
             }
             leitor.close();
 
         }catch (IOException e) {
-            throw new IOException("Erro de I/O");
+            System.out.println(4);
+
+            throw new IOException("Erro de I/O compras");
 
         }
     }

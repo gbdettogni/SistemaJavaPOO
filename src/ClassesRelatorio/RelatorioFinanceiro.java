@@ -17,7 +17,7 @@ import java.io.OutputStreamWriter;
 public class RelatorioFinanceiro {
     public static void geraRelatorioFinanceiro(String caminho) throws IOException {
         try {
-            File relatorio2 = new File(caminho + "saida/1-planejamento.csv");
+            File relatorio2 = new File(caminho + "/saida/1-planejamento.csv");
             if (relatorio2.exists()){
                 OutputStream os = new FileOutputStream(relatorio2);
                 PrintWriter pw = new PrintWriter(new OutputStreamWriter(os, StandardCharsets.UTF_8));
@@ -52,7 +52,9 @@ public class RelatorioFinanceiro {
             }else System.out.println("Sou um viadinho e nao existo");
 
         }catch (IOException e) {
-            throw new IOException();
+            System.out.println(8);
+
+            throw new IOException("RelatorioFinanceiro");
         }
     }
 }

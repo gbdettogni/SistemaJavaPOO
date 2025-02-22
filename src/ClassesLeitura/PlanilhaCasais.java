@@ -20,7 +20,7 @@ public class PlanilhaCasais {
     static void lePlanilhaLares(String pasta) throws Exception{
         try {
             Hashtable<String, String> idsLar = new Hashtable<>();
-            Scanner leitor = new Scanner(new File(pasta + "lares.csv"));    //primeiro pela planilha de lares
+            Scanner leitor = new Scanner(new File(pasta + "/lares.csv"));    //primeiro pela planilha de lares
             leitor.useDelimiter("\n");
             while (leitor.hasNextLine()) {
                 String linha = leitor.nextLine();
@@ -62,14 +62,16 @@ public class PlanilhaCasais {
             leitor.close();
 
         } catch (IOException e) {
-            throw new IOException("Erro de I/O");
+            System.out.println(2);
+
+            throw new IOException("Erro de I/O Casal");
         }
     }
 
     static void lePlanilhaCasamentos(String pasta) throws Exception {
         try {
             Hashtable<String,String> idsCasamento = new Hashtable<>();
-            Scanner leitor = new Scanner(new File(pasta + "casamentos.csv")); //depois pela planilha de casamentos
+            Scanner leitor = new Scanner(new File(pasta + "/casamentos.csv")); //depois pela planilha de casamentos
             leitor.useDelimiter("\n");
             while (leitor.hasNextLine()) {
                 String linha = leitor.nextLine();
@@ -113,7 +115,9 @@ public class PlanilhaCasais {
             }
             leitor.close();
         } catch (IOException e) {
-            throw new IOException("Erro de I/O");
+            System.out.println(3);
+
+            throw new IOException("Erro de I/O lar");
         }
     }
 }

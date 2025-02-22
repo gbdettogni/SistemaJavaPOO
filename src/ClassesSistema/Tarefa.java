@@ -10,7 +10,7 @@ public class Tarefa {
     private LocalDate data;
     private int prazo;
     private Pessoa prestador;
-    private Compra compra;
+    private List<Compra> compras;
     private Parcela parcela;
 
     public Tarefa(String id, LocalDate data, double preco, int prazo, Pessoa prestador, Parcela parcela) {
@@ -20,19 +20,26 @@ public class Tarefa {
         this.prazo = prazo;
         this.prestador = prestador;
         this.parcela = parcela;
-        compra = null;
-
+        compras = new ArrayList<>();
 
     }
 
     public void imprimeDados(){
         System.out.printf("Tarefa: %f\n", preco);
-        if(compra != null)compra.imprimeCompras();
+        if(compras != null) {
+            for (Compra compra : compras){
+                compra.imprimeCompras();
+            }
+        }
     }
 
     public double getPrecoTarefa(){
         double precoTarefa = preco;
-        if (compra != null) precoTarefa += compra.getPreco();
+        if (compras != null){
+            for (Compra compra : compras){
+                precoTarefa += compra.getPreco();
+            }
+        }
         return precoTarefa;
     }
 
@@ -44,15 +51,17 @@ public class Tarefa {
         return data;
     }
 
-    public void setCompra(Compra compra) {
-        this.compra = compra;
+    public void addCompra(Compra compra) {
+        compras.add(compra);
     }
 
     public List<Parcela> getTotalParcelas() {
         List<Parcela> parcelas = new ArrayList<>();
         parcelas.add(parcela);
-        if(compra != null) {
-            parcelas.add(compra.getParcela());
+        if(compras != null) {
+            for (Compra compra : compras){
+                parcelas.add(compra.getParcela());
+            }
         }
         return parcelas;
     }
