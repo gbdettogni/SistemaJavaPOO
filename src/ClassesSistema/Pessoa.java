@@ -1,8 +1,5 @@
 package ClassesSistema;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class Pessoa {
     private String id;
     private String nome;

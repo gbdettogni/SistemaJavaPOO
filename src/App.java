@@ -7,8 +7,7 @@ import ClassesRelatorio.RelatorioGeral;
 import ClassesFinanceiro.Iterador;
 import ClassesSistema.Par;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
 import java.util.List;
 import java.util.Scanner;
 
