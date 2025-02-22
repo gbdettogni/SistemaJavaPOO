@@ -16,9 +16,11 @@ public class RelatorioFinanceiro {
                 OutputStream os = new FileOutputStream(relatorio2);
                 PrintWriter pw = new PrintWriter(new OutputStreamWriter(os, StandardCharsets.UTF_8));
                 for (Par p : Par.getCasaisPar()){
-                    //System.out.printf("%s %s\n", p.getCpf1(), p.getCpf2());
+                    boolean cadastrado = false;
+
                     for (Casal c : Casal.getCasais()){
                         if(c.getPessoa1().getCpf().equals(p.getCpf1()) && c.getPessoa2().getCpf().equals(p.getCpf2())){
+                            cadastrado = true;
                             LocalDate data = c.getPagamentoMaisNovo();
                             if(data != null){
                                 pw.printf("Nome 1;Nome 2");
@@ -34,9 +36,11 @@ public class RelatorioFinanceiro {
                                 pw.println(";");
                             }
                             else pw.printf("Casal com CPFs %s e %s não possui gastos cadastrados.\n",
-                                    c.getPessoa1().getCpf(), c.getPessoa2().getCpf());
+                                    p.getCpf1(), p.getCpf2());
+                            break;
                         }
-                    }
+                    } if(!cadastrado) pw.printf("Casal com CPFs %s e %s não está cadastrado.\n",
+                                    p.getCpf1(), p.getCpf2());
                 }
                 pw.close();
             }else System.out.println("Sou um viadinho e nao existo");

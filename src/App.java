@@ -15,8 +15,8 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
         try{
-            RelatorioGeral.criaRelatorios(args[0]);
-            LeituraPrincipal.leituraCompleta(args[0]);
+            RelatorioGeral.criaRelatorios(args[0]+"/");
+            LeituraPrincipal.leituraCompleta(args[0]+"/");
 
             Scanner sc = new Scanner(System.in);
             sc.useDelimiter("\n");
@@ -42,9 +42,9 @@ public class App {
             Iterador.iteraParcelas();
 
             RelatorioCasais.ordenaListaCasais();
-            RelatorioCasais.geraRelatorioCasais(args[0]);
-            RelatorioFinanceiro.geraRelatorioFinanceiro(args[0]);
-            RelatorioPrestadores.geraRelatorioPrestadores(args[0]);
+            RelatorioCasais.geraRelatorioCasais(args[0]+"/");
+            RelatorioFinanceiro.geraRelatorioFinanceiro(args[0]+"/");
+            RelatorioPrestadores.geraRelatorioPrestadores(args[0]+"/");
         }
         catch(Exception e){
             System.out.println(e.getMessage());

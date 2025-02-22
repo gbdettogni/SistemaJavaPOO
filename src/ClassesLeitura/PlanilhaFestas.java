@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class PlanilhaFestas {
-    static void lePlanilhaFestas(String pasta){
+    static void lePlanilhaFestas(String pasta) throws Exception{
         try {
             Scanner leitor = new Scanner(new File(pasta + "festas.csv"));
             leitor.useDelimiter("\n");
@@ -39,7 +39,7 @@ public class PlanilhaFestas {
                 try {
                     preco = format.parse(dados[5]).doubleValue();
                 } catch (ParseException e) {
-                    System.out.println("Erro de formatação");   //caso doubles não estejam no formato certo
+                    throw new ParseException("Erro de formatação", 0);
                 }
                 Parcela parcela = new Parcela(numParcelas, preco, dataFesta);
 
@@ -52,14 +52,13 @@ public class PlanilhaFestas {
                     c.setFesta(new Festa(local, preco, dataFesta, horario, convidados, parcela));
                 }
                 else {
-                    //EXCEPTION FESTA SEM ID DE CASAMENTO VALIDO
+                    throw new NullPointerException("ID(s) de Casamento " + idCasamento + " não cadastrado na Festa de ID " + idFesta + ".");
                 }
             }
             leitor.close();
 
         }catch (FileNotFoundException e) {
-            System.out.println("Erro de I/O");
-            System.exit(0);
+            throw new FileNotFoundException("Erro de I/0");
         }
     }
 }

@@ -14,7 +14,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class PlanilhaTarefas {
-    static void lePlanilhaTarefas(String pasta){
+    static void lePlanilhaTarefas(String pasta) throws Exception{
         try {
             Scanner leitor = new Scanner(new File(pasta + "tarefas.csv"));
             leitor.useDelimiter("\n");
@@ -58,14 +58,14 @@ public class PlanilhaTarefas {
                 if(l != null)
                     l.addTarefa(new Tarefa(idTarefa, dataInicio, valorPrestador, prazo, prestador, p));
                 else{
-                    //EXCEPTION LAR NAO EXISTE
+                    throw new NullPointerException("ID(s) de Lar " + idLar+ " não cadastrado na tarefa de ID " + idTarefa + ".");
                 }
             }
             leitor.close();
 
         }catch (FileNotFoundException e) {
-            System.out.println("Erro de I/O");
-            System.exit(0);
+            throw new FileNotFoundException("Erro de I/O");
+
         }
     }
 }

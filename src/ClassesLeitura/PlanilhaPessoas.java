@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 
 class PlanilhaPessoas {
-    static void lePlanilhaPessoas(String pasta){
+    static void lePlanilhaPessoas(String pasta) throws Exception{
         try {
             Scanner leitor = new Scanner(new File(pasta + "pessoas.csv"));
             leitor.useDelimiter("\n");
@@ -42,7 +42,7 @@ class PlanilhaPessoas {
                         salario = format.parse(dados[8]).doubleValue();
                         gastos = format.parse(dados[9]).doubleValue();
                     } catch (ParseException e) {
-                        System.out.println("Erro de formatação");   //caso doubles não estejam no formato certo
+                        throw new ParseException("Erro de formatação", 0);   //caso doubles não estejam no formato certo
                     }
 
                     PessoaFisica pf = new PessoaFisica(id,nome,telefone,endereco,
@@ -66,8 +66,7 @@ class PlanilhaPessoas {
             leitor.close();
 
         }catch (FileNotFoundException e) {
-            System.out.println("Erro de I/O pessoas");
-            System.exit(0);
+            throw new FileNotFoundException("Erro de I/O");
         }
     }
 }

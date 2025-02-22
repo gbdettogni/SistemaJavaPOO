@@ -4,6 +4,7 @@ import ClassesSistema.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InvalidClassException;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -15,7 +16,7 @@ import java.util.Scanner;
 
 
 public class PlanilhaCompras {
-    static void lePlanilhaCompras(String pasta){
+    static void lePlanilhaCompras(String pasta) throws Exception{
         try {
             Scanner leitor = new Scanner(new File(pasta + "compras.csv"));
             leitor.useDelimiter("\n");
@@ -28,22 +29,35 @@ public class PlanilhaCompras {
                         idLoja = dados[2],
                         nome = dados[3];
 
-                int qtd = Integer.parseInt(dados[4]);
-                int numParcelas = Integer.parseInt(dados[6]);
+                int qtd = 0;
+                int numParcelas = 0;
+                try {
+                    qtd = Integer.parseInt(dados[4]);
+                    numParcelas = Integer.parseInt(dados[6]);
+                }catch (NumberFormatException e){
+                    throw new NumberFormatException("Erro de formatação");
+                }
 
                 NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
-
                 double preco = 0;
                 try {
                     preco = format.parse(dados[5]).doubleValue();
                 } catch (ParseException e) {
-                    System.out.println("Erro de formatação");   //caso doubles não estejam no formato certo
+                    throw new ParseException("Erro de formatação",0);   //caso doubles não estejam no formato certo
                 }
 
                 Tarefa tarefa = Casal.getTarefaById(idTarefa);//.getTarefaById(idTarefa);
+
+
+
                 Loja loja = Loja.getById(idLoja);
                 if(loja != null){
                     loja.setValorRecebido(loja.getValorRecebido() + (preco * qtd));
+                }else{                                                                      //nao tem loja com ID
+                    PessoaJuridica naoLoja = PessoaJuridica.getById(idLoja);
+                    if(naoLoja != null) throw new InvalidClassException("ID " + idLoja + "da compra de ID " + idCompra + "não se refere a uma loja, mas a uma PJ.");    //tem PJ que nao é loja
+
+                    else throw new NullPointerException("ID(s) de Loja " + idLoja + " não cadastrado na Compra de ID " + idCompra +".");    //nao tem ninguem com o ID
                 }
 
 
@@ -59,8 +73,8 @@ public class PlanilhaCompras {
             leitor.close();
 
         }catch (FileNotFoundException e) {
-            System.out.println("Erro de I/O");
-            System.exit(0);
+            throw new FileNotFoundException("Erro de I/O");
+
         }
     }
 }
